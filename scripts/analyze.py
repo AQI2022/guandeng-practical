@@ -139,7 +139,7 @@ def run(source, output):
                        'age_max':max(r['age_minutes'] for r in records),
                        'observed_age_minutes':sorted({r['age_minutes'] for r in records})}}
     output.mkdir(parents=True,exist_ok=True)
-    (output/'report.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+    (output/'report.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8',newline='\n')
     with (output/'task_decisions.csv').open('w',encoding='utf-8-sig',newline='') as f:
         fields=FIELDS+['age_minutes','split','decision','reason']
         writer=csv.DictWriter(f,fieldnames=fields,lineterminator='\n');writer.writeheader()
