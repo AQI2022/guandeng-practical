@@ -57,6 +57,12 @@ class PolicyTests(unittest.TestCase):
             with self.subTest(changes=changes):
                 self.assertEqual(decide(sample(**changes))['decision'], 'invalid')
 
+    def test_boolean_numbers_and_missing_device_type_are_rejected(self):
+        for changes in ({'battery_level': True}, {'ambient_temp': False},
+                        {'device_type': ''}, {'device_type': None}):
+            with self.subTest(changes=changes):
+                self.assertEqual(decide(sample(**changes))['decision'], 'invalid')
+
 
 if __name__ == '__main__':
     unittest.main()

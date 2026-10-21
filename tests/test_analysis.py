@@ -6,7 +6,7 @@ from pathlib import Path
 import tempfile
 import unittest
 
-from scripts.analyze import FIELDS, load, metric
+from scripts.analyze import FIELDS, load, metric, run
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -43,7 +43,7 @@ class IngestionTests(unittest.TestCase):
         result = metric(rows, lambda r: True)
         self.assertEqual((result['n'], result['tp'], result['fp']), (1, 1, 0))
         self.assertEqual((result['unknown_status'], result['unknown_alerts']), (1, 1))
-        self.assertEqual(result['net_minutes_q50_unknown_all_success'], 25)
+        self.assertEqual(result['net_minutes_q50_conservative'], 25)
 
 
 class SourceReconciliationTests(unittest.TestCase):
@@ -72,7 +72,52 @@ class SourceReconciliationTests(unittest.TestCase):
         self.assertEqual(evaluation['all_alerts_including_unknown'], len(alerts))
         self.assertEqual(evaluation['tp'], tp)
         self.assertEqual(evaluation['unknown_alerts'], unknown_alerts)
-        self.assertEqual(evaluation['net_minutes_q50_unknown_all_success'], 1145)
+        self.assertEqual(evaluation['net_minutes_q50_conservative'], 1145)
+
+    def test_joint_selection_and_workshop_sensitivity(self):
+        report = json.loads((ROOT / 'results/report.json').read_text(encoding='utf-8'))
+        self.assertEqual(report['joint_policy_selection']['threshold'], 15)
+        self.assertEqual(report['joint_policy_selection']['workshops'],
+                         ['一号制氢车间', '三号动力车间', '四号综合测试区'])
+        self.assertEqual(sum(b['n'] for b in report['age_bins']), report['summary']['labeled_tasks'])
+        three = next(w for w in report['workshop_selection'] if w['workshop'] == '三号动力车间')
+        self.assertAlmostEqual(three['q50_review_cost_ceiling_minutes'], 11.9117647, places=5)
+        scenarios = {(s['q'], s['review_cost_minutes']): s for s in report['policy_selection_sensitivity']}
+        self.assertEqual(scenarios[(.4, 10)]['workshops'], ['一号制氢车间', '四号综合测试区'])
+        self.assertEqual(scenarios[(.3, 10)]['workshops'], ['一号制氢车间'])
+        self.assertEqual(scenarios[(.5, 15)]['workshops'], ['一号制氢车间', '四号综合测试区'])
+
+    def test_run_rejects_dates_outside_fixed_study_window(self):
+        with (ROOT / 'data/inspection_tasks.csv').open(encoding='utf-8-sig', newline='') as f:
+            rows = list(csv.DictReader(f))
+        extra = dict(rows[0], task_id='synthetic-outside-study-window',
+                     execute_time='2026-09-08T08:00:00+08:00',
+                     last_telemetry_sync='2026-09-07T22:30:00Z', task_status='1')
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / 'synthetic.csv'
+            with path.open('w', encoding='utf-8', newline='') as f:
+                writer = csv.DictWriter(f, fieldnames=FIELDS)
+                writer.writeheader()
+                writer.writerows(rows + [extra])
+            output = Path(directory) / 'report'
+            with self.assertRaisesRegex(ValueError, '超出本题研究窗口'):
+                run(path, output)
+            self.assertFalse(output.exists())
+
+    def test_run_rejects_missing_calendar_date(self):
+        with (ROOT / 'data/inspection_tasks.csv').open(encoding='utf-8-sig', newline='') as f:
+            rows = list(csv.DictReader(f))
+        rows = [row for row in rows if row['execute_time'][:10] != '2026-09-03']
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / 'synthetic.csv'
+            with path.open('w', encoding='utf-8', newline='') as f:
+                writer = csv.DictWriter(f, fieldnames=FIELDS)
+                writer.writeheader()
+                writer.writerows(rows)
+            output = Path(directory) / 'report'
+            with self.assertRaisesRegex(ValueError, '输入缺少本题研究日期'):
+                run(path, output)
+            self.assertFalse(output.exists())
 
 
 if __name__ == '__main__':

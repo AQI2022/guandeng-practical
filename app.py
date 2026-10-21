@@ -41,7 +41,7 @@ class Handler(BaseHTTPRequestHandler):
                 raise ValueError('Expected JSON object')
             result=decide(payload)
             self.send(200,json.dumps(result,ensure_ascii=False).encode('utf-8'),'application/json; charset=utf-8')
-        except (ValueError,TypeError,UnicodeError):
+        except (ValueError,TypeError,UnicodeError,RecursionError):
             self.send(400,b'{"error":"Invalid JSON request"}','application/json')
 
 

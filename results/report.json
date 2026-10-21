@@ -9,7 +9,7 @@
     "failure_rate": 0.11623779946761313
   },
   "policy": {
-    "description": "一号、三号、四号车间：状态超过 15 分钟未成功更新，执行前提示数据复核；二号先影子观察。",
+    "description": "一号、三号、四号车间：距末次成功拉取超过 15 分钟，执行前提示数据复核；二号先影子观察。",
     "threshold_minutes": 15,
     "comparison": ">",
     "rule_version": "freshness-v1",
@@ -40,7 +40,7 @@
     "unknown_status": 27,
     "unknown_alerts": 7,
     "all_alerts_including_unknown": 88,
-    "net_minutes_q50_unknown_all_success": 1145.0,
+    "net_minutes_q50_conservative": 1145.0,
     "break_even_including_unknown_cost": 0.21728395061728395
   },
   "evaluations": {
@@ -63,7 +63,7 @@
         "unknown_status": 29,
         "unknown_alerts": 0,
         "all_alerts_including_unknown": 0,
-        "net_minutes_q50_unknown_all_success": 0.0,
+        "net_minutes_q50_conservative": 0.0,
         "break_even_including_unknown_cost": null
       },
       "all_alert": {
@@ -84,7 +84,7 @@
         "unknown_status": 29,
         "unknown_alerts": 29,
         "all_alerts_including_unknown": 667,
-        "net_minutes_q50_unknown_all_success": -3385.0,
+        "net_minutes_q50_conservative": -3385.0,
         "break_even_including_unknown_cost": 1.0152207001522071
       },
       "battery_le20": {
@@ -105,7 +105,7 @@
         "unknown_status": 29,
         "unknown_alerts": 22,
         "all_alerts_including_unknown": 445,
-        "net_minutes_q50_unknown_all_success": -2290.0,
+        "net_minutes_q50_conservative": -2290.0,
         "break_even_including_unknown_cost": 1.0300925925925926
       },
       "temperature_ge60": {
@@ -126,7 +126,7 @@
         "unknown_status": 29,
         "unknown_alerts": 10,
         "all_alerts_including_unknown": 216,
-        "net_minutes_q50_unknown_all_success": -810.0,
+        "net_minutes_q50_conservative": -810.0,
         "break_even_including_unknown_cost": 0.8
       },
       "stale_all_workshops": {
@@ -147,7 +147,7 @@
         "unknown_status": 29,
         "unknown_alerts": 9,
         "all_alerts_including_unknown": 154,
-        "net_minutes_q50_unknown_all_success": 755.0,
+        "net_minutes_q50_conservative": 755.0,
         "break_even_including_unknown_cost": 0.3355119825708061
       },
       "pilot_policy": {
@@ -168,7 +168,7 @@
         "unknown_status": 29,
         "unknown_alerts": 9,
         "all_alerts_including_unknown": 126,
-        "net_minutes_q50_unknown_all_success": 990.0,
+        "net_minutes_q50_conservative": 990.0,
         "break_even_including_unknown_cost": 0.28
       }
     },
@@ -191,7 +191,7 @@
         "unknown_status": 27,
         "unknown_alerts": 0,
         "all_alerts_including_unknown": 0,
-        "net_minutes_q50_unknown_all_success": 0.0,
+        "net_minutes_q50_conservative": 0.0,
         "break_even_including_unknown_cost": null
       },
       "all_alert": {
@@ -212,7 +212,7 @@
         "unknown_status": 27,
         "unknown_alerts": 27,
         "all_alerts_including_unknown": 516,
-        "net_minutes_q50_unknown_all_success": -2550.0,
+        "net_minutes_q50_conservative": -2550.0,
         "break_even_including_unknown_cost": 0.9885057471264368
       },
       "battery_le20": {
@@ -233,7 +233,7 @@
         "unknown_status": 27,
         "unknown_alerts": 19,
         "all_alerts_including_unknown": 344,
-        "net_minutes_q50_unknown_all_success": -1640.0,
+        "net_minutes_q50_conservative": -1640.0,
         "break_even_including_unknown_cost": 0.9555555555555556
       },
       "temperature_ge60": {
@@ -254,7 +254,7 @@
         "unknown_status": 27,
         "unknown_alerts": 8,
         "all_alerts_including_unknown": 149,
-        "net_minutes_q50_unknown_all_success": -590.0,
+        "net_minutes_q50_conservative": -590.0,
         "break_even_including_unknown_cost": 0.8277777777777777
       },
       "stale_all_workshops": {
@@ -275,7 +275,7 @@
         "unknown_status": 27,
         "unknown_alerts": 7,
         "all_alerts_including_unknown": 111,
-        "net_minutes_q50_unknown_all_success": 960.0,
+        "net_minutes_q50_conservative": 960.0,
         "break_even_including_unknown_cost": 0.26811594202898553
       },
       "pilot_policy": {
@@ -296,7 +296,7 @@
         "unknown_status": 27,
         "unknown_alerts": 7,
         "all_alerts_including_unknown": 88,
-        "net_minutes_q50_unknown_all_success": 1145.0,
+        "net_minutes_q50_conservative": 1145.0,
         "break_even_including_unknown_cost": 0.21728395061728395
       }
     },
@@ -319,7 +319,7 @@
         "unknown_status": 56,
         "unknown_alerts": 0,
         "all_alerts_including_unknown": 0,
-        "net_minutes_q50_unknown_all_success": 0.0,
+        "net_minutes_q50_conservative": 0.0,
         "break_even_including_unknown_cost": null
       },
       "all_alert": {
@@ -340,7 +340,7 @@
         "unknown_status": 56,
         "unknown_alerts": 56,
         "all_alerts_including_unknown": 1183,
-        "net_minutes_q50_unknown_all_success": -5935.0,
+        "net_minutes_q50_conservative": -5935.0,
         "break_even_including_unknown_cost": 1.003392705682782
       },
       "battery_le20": {
@@ -361,7 +361,7 @@
         "unknown_status": 56,
         "unknown_alerts": 41,
         "all_alerts_including_unknown": 789,
-        "net_minutes_q50_unknown_all_success": -3930.0,
+        "net_minutes_q50_conservative": -3930.0,
         "break_even_including_unknown_cost": 0.9962121212121212
       },
       "temperature_ge60": {
@@ -382,7 +382,7 @@
         "unknown_status": 56,
         "unknown_alerts": 18,
         "all_alerts_including_unknown": 365,
-        "net_minutes_q50_unknown_all_success": -1400.0,
+        "net_minutes_q50_conservative": -1400.0,
         "break_even_including_unknown_cost": 0.8111111111111111
       },
       "stale_all_workshops": {
@@ -403,7 +403,7 @@
         "unknown_status": 56,
         "unknown_alerts": 16,
         "all_alerts_including_unknown": 265,
-        "net_minutes_q50_unknown_all_success": 1715.0,
+        "net_minutes_q50_conservative": 1715.0,
         "break_even_including_unknown_cost": 0.3035509736540664
       },
       "pilot_policy": {
@@ -424,7 +424,7 @@
         "unknown_status": 56,
         "unknown_alerts": 16,
         "all_alerts_including_unknown": 214,
-        "net_minutes_q50_unknown_all_success": 2135.0,
+        "net_minutes_q50_conservative": 2135.0,
         "break_even_including_unknown_cost": 0.25029239766081873
       }
     }
@@ -459,7 +459,7 @@
     }
   ],
   "source": {
-    "file": "data/inspection_tasks.csv",
+    "file": "inspection_tasks.csv",
     "sha256": "8d2a42ac120d9056ae0caa5820533b515ef80e3e8ec845004337c7ab7e635887",
     "start": "2026-09-01T07:01:00+08:00",
     "end": "2026-09-07T21:57:00+08:00"
@@ -470,6 +470,7 @@
     "q_selection_assumption": 0.5,
     "failure_minutes": 90,
     "review_minutes": 10,
+    "policy_selection": "联合比较候选阈值和车间；全部提示计入复核成本，未知结果不计避免失败的收益。",
     "claim": "探索性历史回放，非盲测、非因果验证；有效率 q 未观测。"
   },
   "threshold_selection": [
@@ -492,7 +493,7 @@
       "unknown_status": 29,
       "unknown_alerts": 20,
       "all_alerts_including_unknown": 458,
-      "net_minutes_q50_unknown_all_success": -1745.0,
+      "net_minutes_q50_conservative": -1745.0,
       "break_even_including_unknown_cost": 0.8077601410934744
     },
     {
@@ -514,7 +515,7 @@
       "unknown_status": 29,
       "unknown_alerts": 15,
       "all_alerts_including_unknown": 272,
-      "net_minutes_q50_unknown_all_success": -290.0,
+      "net_minutes_q50_conservative": -290.0,
       "break_even_including_unknown_cost": 0.5596707818930041
     },
     {
@@ -536,7 +537,7 @@
       "unknown_status": 29,
       "unknown_alerts": 9,
       "all_alerts_including_unknown": 154,
-      "net_minutes_q50_unknown_all_success": 755.0,
+      "net_minutes_q50_conservative": 755.0,
       "break_even_including_unknown_cost": 0.3355119825708061
     },
     {
@@ -558,7 +559,7 @@
       "unknown_status": 29,
       "unknown_alerts": 8,
       "all_alerts_including_unknown": 140,
-      "net_minutes_q50_unknown_all_success": 625.0,
+      "net_minutes_q50_conservative": 625.0,
       "break_even_including_unknown_cost": 0.345679012345679
     },
     {
@@ -580,7 +581,7 @@
       "unknown_status": 29,
       "unknown_alerts": 5,
       "all_alerts_including_unknown": 103,
-      "net_minutes_q50_unknown_all_success": 455.0,
+      "net_minutes_q50_conservative": 455.0,
       "break_even_including_unknown_cost": 0.3468013468013468
     },
     {
@@ -602,7 +603,7 @@
       "unknown_status": 29,
       "unknown_alerts": 3,
       "all_alerts_including_unknown": 62,
-      "net_minutes_q50_unknown_all_success": 145.0,
+      "net_minutes_q50_conservative": 145.0,
       "break_even_including_unknown_cost": 0.40522875816993464
     },
     {
@@ -624,14 +625,71 @@
       "unknown_status": 29,
       "unknown_alerts": 0,
       "all_alerts_including_unknown": 23,
-      "net_minutes_q50_unknown_all_success": 40.0,
+      "net_minutes_q50_conservative": 40.0,
       "break_even_including_unknown_cost": 0.42592592592592593
+    }
+  ],
+  "joint_policy_selection": {
+    "threshold": 15,
+    "workshops": [
+      "一号制氢车间",
+      "三号动力车间",
+      "四号综合测试区"
+    ],
+    "all_alerts": 126,
+    "net_minutes": 990.0
+  },
+  "policy_selection_sensitivity": [
+    {
+      "q": 0.5,
+      "review_cost_minutes": 10,
+      "threshold": 15,
+      "workshops": [
+        "一号制氢车间",
+        "三号动力车间",
+        "四号综合测试区"
+      ],
+      "all_alerts": 126,
+      "net_minutes": 990.0
+    },
+    {
+      "q": 0.4,
+      "review_cost_minutes": 10,
+      "threshold": 15,
+      "workshops": [
+        "一号制氢车间",
+        "四号综合测试区"
+      ],
+      "all_alerts": 92,
+      "net_minutes": 556.0
+    },
+    {
+      "q": 0.3,
+      "review_cost_minutes": 10,
+      "threshold": 15,
+      "workshops": [
+        "一号制氢车间"
+      ],
+      "all_alerts": 46,
+      "net_minutes": 215.0
+    },
+    {
+      "q": 0.5,
+      "review_cost_minutes": 15,
+      "threshold": 15,
+      "workshops": [
+        "一号制氢车间",
+        "四号综合测试区"
+      ],
+      "all_alerts": 92,
+      "net_minutes": 465.0
     }
   ],
   "workshop_selection": [
     {
       "workshop": "一号制氢车间",
       "include_in_pilot": true,
+      "q50_review_cost_ceiling_minutes": 24.456521739130434,
       "n": 157,
       "failures": 28,
       "alerts": 43,
@@ -649,12 +707,13 @@
       "unknown_status": 9,
       "unknown_alerts": 3,
       "all_alerts_including_unknown": 46,
-      "net_minutes_q50_unknown_all_success": 665.0,
+      "net_minutes_q50_conservative": 665.0,
       "break_even_including_unknown_cost": 0.20444444444444446
     },
     {
       "workshop": "二号装配车间",
       "include_in_pilot": false,
+      "q50_review_cost_ceiling_minutes": 1.6071428571428572,
       "n": 155,
       "failures": 13,
       "alerts": 28,
@@ -672,12 +731,13 @@
       "unknown_status": 3,
       "unknown_alerts": 0,
       "all_alerts_including_unknown": 28,
-      "net_minutes_q50_unknown_all_success": -235.0,
+      "net_minutes_q50_conservative": -235.0,
       "break_even_including_unknown_cost": 3.111111111111111
     },
     {
       "workshop": "三号动力车间",
       "include_in_pilot": true,
+      "q50_review_cost_ceiling_minutes": 11.911764705882353,
       "n": 147,
       "failures": 13,
       "alerts": 31,
@@ -695,12 +755,13 @@
       "unknown_status": 9,
       "unknown_alerts": 3,
       "all_alerts_including_unknown": 34,
-      "net_minutes_q50_unknown_all_success": 65.0,
+      "net_minutes_q50_conservative": 65.0,
       "break_even_including_unknown_cost": 0.41975308641975306
     },
     {
       "workshop": "四号综合测试区",
       "include_in_pilot": true,
+      "q50_review_cost_ceiling_minutes": 15.652173913043478,
       "n": 179,
       "failures": 19,
       "alerts": 43,
@@ -718,7 +779,7 @@
       "unknown_status": 8,
       "unknown_alerts": 3,
       "all_alerts_including_unknown": 46,
-      "net_minutes_q50_unknown_all_success": 260.0,
+      "net_minutes_q50_conservative": 260.0,
       "break_even_including_unknown_cost": 0.3194444444444444
     }
   ],
@@ -743,7 +804,7 @@
         "unknown_status": 14,
         "unknown_alerts": 14,
         "all_alerts_including_unknown": 296,
-        "net_minutes_q50_unknown_all_success": -845.0,
+        "net_minutes_q50_conservative": -845.0,
         "break_even_including_unknown_cost": 0.6997635933806147
       },
       "stale": {
@@ -764,7 +825,7 @@
         "unknown_status": 14,
         "unknown_alerts": 4,
         "all_alerts_including_unknown": 70,
-        "net_minutes_q50_unknown_all_success": 1145.0,
+        "net_minutes_q50_conservative": 1145.0,
         "break_even_including_unknown_cost": 0.1897018970189702
       },
       "fresh": {
@@ -785,7 +846,7 @@
         "unknown_status": 14,
         "unknown_alerts": 10,
         "all_alerts_including_unknown": 226,
-        "net_minutes_q50_unknown_all_success": -1990.0,
+        "net_minutes_q50_conservative": -1990.0,
         "break_even_including_unknown_cost": 4.185185185185185
       }
     },
@@ -809,7 +870,7 @@
         "unknown_status": 17,
         "unknown_alerts": 17,
         "all_alerts_including_unknown": 286,
-        "net_minutes_q50_unknown_all_success": -1555.0,
+        "net_minutes_q50_conservative": -1555.0,
         "break_even_including_unknown_cost": 1.0957854406130267
       },
       "stale": {
@@ -830,7 +891,7 @@
         "unknown_status": 17,
         "unknown_alerts": 5,
         "all_alerts_including_unknown": 62,
-        "net_minutes_q50_unknown_all_success": 370.0,
+        "net_minutes_q50_conservative": 370.0,
         "break_even_including_unknown_cost": 0.31313131313131315
       },
       "fresh": {
@@ -851,7 +912,7 @@
         "unknown_status": 17,
         "unknown_alerts": 12,
         "all_alerts_including_unknown": 224,
-        "net_minutes_q50_unknown_all_success": -1925.0,
+        "net_minutes_q50_conservative": -1925.0,
         "break_even_including_unknown_cost": 3.5555555555555554
       }
     },
@@ -875,7 +936,7 @@
         "unknown_status": 7,
         "unknown_alerts": 7,
         "all_alerts_including_unknown": 280,
-        "net_minutes_q50_unknown_all_success": -1945.0,
+        "net_minutes_q50_conservative": -1945.0,
         "break_even_including_unknown_cost": 1.6374269005847952
       },
       "stale": {
@@ -896,7 +957,7 @@
         "unknown_status": 7,
         "unknown_alerts": 0,
         "all_alerts_including_unknown": 51,
-        "net_minutes_q50_unknown_all_success": -420.0,
+        "net_minutes_q50_conservative": -420.0,
         "break_even_including_unknown_cost": 2.8333333333333335
       },
       "fresh": {
@@ -917,7 +978,7 @@
         "unknown_status": 7,
         "unknown_alerts": 7,
         "all_alerts_including_unknown": 229,
-        "net_minutes_q50_unknown_all_success": -1525.0,
+        "net_minutes_q50_conservative": -1525.0,
         "break_even_including_unknown_cost": 1.4967320261437909
       }
     },
@@ -941,7 +1002,7 @@
         "unknown_status": 18,
         "unknown_alerts": 18,
         "all_alerts_including_unknown": 321,
-        "net_minutes_q50_unknown_all_success": -1590.0,
+        "net_minutes_q50_conservative": -1590.0,
         "break_even_including_unknown_cost": 0.9907407407407407
       },
       "stale": {
@@ -962,7 +1023,7 @@
         "unknown_status": 18,
         "unknown_alerts": 7,
         "all_alerts_including_unknown": 82,
-        "net_minutes_q50_unknown_all_success": 620.0,
+        "net_minutes_q50_conservative": 620.0,
         "break_even_including_unknown_cost": 0.2847222222222222
       },
       "fresh": {
@@ -983,7 +1044,7 @@
         "unknown_status": 18,
         "unknown_alerts": 11,
         "all_alerts_including_unknown": 239,
-        "net_minutes_q50_unknown_all_success": -2210.0,
+        "net_minutes_q50_conservative": -2210.0,
         "break_even_including_unknown_cost": 6.638888888888889
       }
     }
@@ -1009,7 +1070,7 @@
         "unknown_status": 5,
         "unknown_alerts": 5,
         "all_alerts_including_unknown": 131,
-        "net_minutes_q50_unknown_all_success": -725.0,
+        "net_minutes_q50_conservative": -725.0,
         "break_even_including_unknown_cost": 1.1196581196581197
       },
       "stale": {
@@ -1030,7 +1091,7 @@
         "unknown_status": 5,
         "unknown_alerts": 0,
         "all_alerts_including_unknown": 22,
-        "net_minutes_q50_unknown_all_success": 185.0,
+        "net_minutes_q50_conservative": 185.0,
         "break_even_including_unknown_cost": 0.2716049382716049
       },
       "fresh": {
@@ -1051,7 +1112,7 @@
         "unknown_status": 5,
         "unknown_alerts": 5,
         "all_alerts_including_unknown": 109,
-        "net_minutes_q50_unknown_all_success": -910.0,
+        "net_minutes_q50_conservative": -910.0,
         "break_even_including_unknown_cost": 3.0277777777777777
       }
     },
@@ -1075,7 +1136,7 @@
         "unknown_status": 4,
         "unknown_alerts": 4,
         "all_alerts_including_unknown": 121,
-        "net_minutes_q50_unknown_all_success": -535.0,
+        "net_minutes_q50_conservative": -535.0,
         "break_even_including_unknown_cost": 0.8962962962962963
       },
       "stale": {
@@ -1096,7 +1157,7 @@
         "unknown_status": 4,
         "unknown_alerts": 1,
         "all_alerts_including_unknown": 25,
-        "net_minutes_q50_unknown_all_success": 245.0,
+        "net_minutes_q50_conservative": 245.0,
         "break_even_including_unknown_cost": 0.25252525252525254
       },
       "fresh": {
@@ -1117,7 +1178,7 @@
         "unknown_status": 4,
         "unknown_alerts": 3,
         "all_alerts_including_unknown": 96,
-        "net_minutes_q50_unknown_all_success": -780.0,
+        "net_minutes_q50_conservative": -780.0,
         "break_even_including_unknown_cost": 2.6666666666666665
       }
     },
@@ -1141,7 +1202,7 @@
         "unknown_status": 7,
         "unknown_alerts": 7,
         "all_alerts_including_unknown": 100,
-        "net_minutes_q50_unknown_all_success": -505.0,
+        "net_minutes_q50_conservative": -505.0,
         "break_even_including_unknown_cost": 1.0101010101010102
       },
       "stale": {
@@ -1162,7 +1223,7 @@
         "unknown_status": 7,
         "unknown_alerts": 2,
         "all_alerts_including_unknown": 31,
-        "net_minutes_q50_unknown_all_success": 95.0,
+        "net_minutes_q50_conservative": 95.0,
         "break_even_including_unknown_cost": 0.38271604938271603
       },
       "fresh": {
@@ -1183,7 +1244,7 @@
         "unknown_status": 7,
         "unknown_alerts": 5,
         "all_alerts_including_unknown": 69,
-        "net_minutes_q50_unknown_all_success": -600.0,
+        "net_minutes_q50_conservative": -600.0,
         "break_even_including_unknown_cost": 3.8333333333333335
       }
     },
@@ -1207,7 +1268,7 @@
         "unknown_status": 7,
         "unknown_alerts": 7,
         "all_alerts_including_unknown": 96,
-        "net_minutes_q50_unknown_all_success": -510.0,
+        "net_minutes_q50_conservative": -510.0,
         "break_even_including_unknown_cost": 1.0666666666666667
       },
       "stale": {
@@ -1228,7 +1289,7 @@
         "unknown_status": 7,
         "unknown_alerts": 3,
         "all_alerts_including_unknown": 26,
-        "net_minutes_q50_unknown_all_success": -80.0,
+        "net_minutes_q50_conservative": -80.0,
         "break_even_including_unknown_cost": 0.7222222222222222
       },
       "fresh": {
@@ -1249,7 +1310,7 @@
         "unknown_status": 7,
         "unknown_alerts": 4,
         "all_alerts_including_unknown": 70,
-        "net_minutes_q50_unknown_all_success": -430.0,
+        "net_minutes_q50_conservative": -430.0,
         "break_even_including_unknown_cost": 1.2962962962962963
       }
     },
@@ -1273,7 +1334,7 @@
         "unknown_status": 3,
         "unknown_alerts": 3,
         "all_alerts_including_unknown": 131,
-        "net_minutes_q50_unknown_all_success": -860.0,
+        "net_minutes_q50_conservative": -860.0,
         "break_even_including_unknown_cost": 1.4555555555555555
       },
       "stale": {
@@ -1294,7 +1355,7 @@
         "unknown_status": 3,
         "unknown_alerts": 0,
         "all_alerts_including_unknown": 25,
-        "net_minutes_q50_unknown_all_success": 110.0,
+        "net_minutes_q50_conservative": 110.0,
         "break_even_including_unknown_cost": 0.3472222222222222
       },
       "fresh": {
@@ -1315,7 +1376,7 @@
         "unknown_status": 3,
         "unknown_alerts": 3,
         "all_alerts_including_unknown": 106,
-        "net_minutes_q50_unknown_all_success": -970.0,
+        "net_minutes_q50_conservative": -970.0,
         "break_even_including_unknown_cost": 5.888888888888889
       }
     },
@@ -1339,7 +1400,7 @@
         "unknown_status": 10,
         "unknown_alerts": 10,
         "all_alerts_including_unknown": 101,
-        "net_minutes_q50_unknown_all_success": -695.0,
+        "net_minutes_q50_conservative": -695.0,
         "break_even_including_unknown_cost": 1.6031746031746033
       },
       "stale": {
@@ -1360,7 +1421,7 @@
         "unknown_status": 10,
         "unknown_alerts": 4,
         "all_alerts_including_unknown": 18,
-        "net_minutes_q50_unknown_all_success": 90.0,
+        "net_minutes_q50_conservative": 90.0,
         "break_even_including_unknown_cost": 0.3333333333333333
       },
       "fresh": {
@@ -1381,7 +1442,7 @@
         "unknown_status": 10,
         "unknown_alerts": 6,
         "all_alerts_including_unknown": 83,
-        "net_minutes_q50_unknown_all_success": -785.0,
+        "net_minutes_q50_conservative": -785.0,
         "break_even_including_unknown_cost": 9.222222222222221
       }
     },
@@ -1405,7 +1466,7 @@
         "unknown_status": 5,
         "unknown_alerts": 5,
         "all_alerts_including_unknown": 121,
-        "net_minutes_q50_unknown_all_success": -535.0,
+        "net_minutes_q50_conservative": -535.0,
         "break_even_including_unknown_cost": 0.8962962962962963
       },
       "stale": {
@@ -1426,7 +1487,7 @@
         "unknown_status": 5,
         "unknown_alerts": 2,
         "all_alerts_including_unknown": 24,
-        "net_minutes_q50_unknown_all_success": 165.0,
+        "net_minutes_q50_conservative": 165.0,
         "break_even_including_unknown_cost": 0.2962962962962963
       },
       "fresh": {
@@ -1447,7 +1508,7 @@
         "unknown_status": 5,
         "unknown_alerts": 3,
         "all_alerts_including_unknown": 97,
-        "net_minutes_q50_unknown_all_success": -700.0,
+        "net_minutes_q50_conservative": -700.0,
         "break_even_including_unknown_cost": 1.7962962962962963
       }
     },
@@ -1471,7 +1532,7 @@
         "unknown_status": 3,
         "unknown_alerts": 3,
         "all_alerts_including_unknown": 113,
-        "net_minutes_q50_unknown_all_success": -320.0,
+        "net_minutes_q50_conservative": -320.0,
         "break_even_including_unknown_cost": 0.6975308641975309
       },
       "stale": {
@@ -1492,7 +1553,7 @@
         "unknown_status": 3,
         "unknown_alerts": 1,
         "all_alerts_including_unknown": 31,
-        "net_minutes_q50_unknown_all_success": 410.0,
+        "net_minutes_q50_conservative": 410.0,
         "break_even_including_unknown_cost": 0.2152777777777778
       },
       "fresh": {
@@ -1513,7 +1574,7 @@
         "unknown_status": 3,
         "unknown_alerts": 2,
         "all_alerts_including_unknown": 82,
-        "net_minutes_q50_unknown_all_success": -730.0,
+        "net_minutes_q50_conservative": -730.0,
         "break_even_including_unknown_cost": 4.555555555555555
       }
     },
@@ -1537,7 +1598,7 @@
         "unknown_status": 8,
         "unknown_alerts": 8,
         "all_alerts_including_unknown": 135,
-        "net_minutes_q50_unknown_all_success": -810.0,
+        "net_minutes_q50_conservative": -810.0,
         "break_even_including_unknown_cost": 1.25
       },
       "stale": {
@@ -1558,7 +1619,7 @@
         "unknown_status": 8,
         "unknown_alerts": 2,
         "all_alerts_including_unknown": 30,
-        "net_minutes_q50_unknown_all_success": 60.0,
+        "net_minutes_q50_conservative": 60.0,
         "break_even_including_unknown_cost": 0.4166666666666667
       },
       "fresh": {
@@ -1579,7 +1640,7 @@
         "unknown_status": 8,
         "unknown_alerts": 6,
         "all_alerts_including_unknown": 105,
-        "net_minutes_q50_unknown_all_success": -870.0,
+        "net_minutes_q50_conservative": -870.0,
         "break_even_including_unknown_cost": 2.9166666666666665
       }
     },
@@ -1603,7 +1664,7 @@
         "unknown_status": 4,
         "unknown_alerts": 4,
         "all_alerts_including_unknown": 134,
-        "net_minutes_q50_unknown_all_success": -440.0,
+        "net_minutes_q50_conservative": -440.0,
         "break_even_including_unknown_cost": 0.7444444444444445
       },
       "stale": {
@@ -1624,7 +1685,7 @@
         "unknown_status": 4,
         "unknown_alerts": 1,
         "all_alerts_including_unknown": 33,
-        "net_minutes_q50_unknown_all_success": 435.0,
+        "net_minutes_q50_conservative": 435.0,
         "break_even_including_unknown_cost": 0.21568627450980393
       },
       "fresh": {
@@ -1645,7 +1706,7 @@
         "unknown_status": 4,
         "unknown_alerts": 3,
         "all_alerts_including_unknown": 101,
-        "net_minutes_q50_unknown_all_success": -875.0,
+        "net_minutes_q50_conservative": -875.0,
         "break_even_including_unknown_cost": 3.740740740740741
       }
     }
@@ -1671,7 +1732,7 @@
         "unknown_status": 11,
         "unknown_alerts": 11,
         "all_alerts_including_unknown": 182,
-        "net_minutes_q50_unknown_all_success": -1010.0,
+        "net_minutes_q50_conservative": -1010.0,
         "break_even_including_unknown_cost": 1.123456790123457
       },
       "stale": {
@@ -1692,7 +1753,7 @@
         "unknown_status": 11,
         "unknown_alerts": 2,
         "all_alerts_including_unknown": 46,
-        "net_minutes_q50_unknown_all_success": 125.0,
+        "net_minutes_q50_conservative": 125.0,
         "break_even_including_unknown_cost": 0.39316239316239315
       },
       "fresh": {
@@ -1713,7 +1774,7 @@
         "unknown_status": 11,
         "unknown_alerts": 9,
         "all_alerts_including_unknown": 136,
-        "net_minutes_q50_unknown_all_success": -1135.0,
+        "net_minutes_q50_conservative": -1135.0,
         "break_even_including_unknown_cost": 3.022222222222222
       }
     },
@@ -1737,7 +1798,7 @@
         "unknown_status": 5,
         "unknown_alerts": 5,
         "all_alerts_including_unknown": 173,
-        "net_minutes_q50_unknown_all_success": -920.0,
+        "net_minutes_q50_conservative": -920.0,
         "break_even_including_unknown_cost": 1.0679012345679013
       },
       "stale": {
@@ -1758,7 +1819,7 @@
         "unknown_status": 5,
         "unknown_alerts": 2,
         "all_alerts_including_unknown": 40,
-        "net_minutes_q50_unknown_all_success": 185.0,
+        "net_minutes_q50_conservative": 185.0,
         "break_even_including_unknown_cost": 0.3418803418803419
       },
       "fresh": {
@@ -1779,7 +1840,7 @@
         "unknown_status": 5,
         "unknown_alerts": 3,
         "all_alerts_including_unknown": 133,
-        "net_minutes_q50_unknown_all_success": -1105.0,
+        "net_minutes_q50_conservative": -1105.0,
         "break_even_including_unknown_cost": 2.9555555555555557
       }
     },
@@ -1803,7 +1864,7 @@
         "unknown_status": 8,
         "unknown_alerts": 8,
         "all_alerts_including_unknown": 171,
-        "net_minutes_q50_unknown_all_success": -855.0,
+        "net_minutes_q50_conservative": -855.0,
         "break_even_including_unknown_cost": 1.0
       },
       "stale": {
@@ -1824,7 +1885,7 @@
         "unknown_status": 8,
         "unknown_alerts": 3,
         "all_alerts_including_unknown": 33,
-        "net_minutes_q50_unknown_all_success": 210.0,
+        "net_minutes_q50_conservative": 210.0,
         "break_even_including_unknown_cost": 0.3055555555555556
       },
       "fresh": {
@@ -1845,7 +1906,7 @@
         "unknown_status": 8,
         "unknown_alerts": 5,
         "all_alerts_including_unknown": 138,
-        "net_minutes_q50_unknown_all_success": -1065.0,
+        "net_minutes_q50_conservative": -1065.0,
         "break_even_including_unknown_cost": 2.1904761904761907
       }
     },
@@ -1869,7 +1930,7 @@
         "unknown_status": 5,
         "unknown_alerts": 5,
         "all_alerts_including_unknown": 141,
-        "net_minutes_q50_unknown_all_success": -600.0,
+        "net_minutes_q50_conservative": -600.0,
         "break_even_including_unknown_cost": 0.8703703703703703
       },
       "stale": {
@@ -1890,7 +1951,7 @@
         "unknown_status": 5,
         "unknown_alerts": 2,
         "all_alerts_including_unknown": 35,
-        "net_minutes_q50_unknown_all_success": 235.0,
+        "net_minutes_q50_conservative": 235.0,
         "break_even_including_unknown_cost": 0.29914529914529914
       },
       "fresh": {
@@ -1911,7 +1972,7 @@
         "unknown_status": 5,
         "unknown_alerts": 3,
         "all_alerts_including_unknown": 106,
-        "net_minutes_q50_unknown_all_success": -835.0,
+        "net_minutes_q50_conservative": -835.0,
         "break_even_including_unknown_cost": 2.3555555555555556
       }
     },
@@ -1935,7 +1996,7 @@
         "unknown_status": 16,
         "unknown_alerts": 16,
         "all_alerts_including_unknown": 175,
-        "net_minutes_q50_unknown_all_success": -1075.0,
+        "net_minutes_q50_conservative": -1075.0,
         "break_even_including_unknown_cost": 1.2962962962962963
       },
       "stale": {
@@ -1956,7 +2017,7 @@
         "unknown_status": 16,
         "unknown_alerts": 4,
         "all_alerts_including_unknown": 39,
-        "net_minutes_q50_unknown_all_success": 195.0,
+        "net_minutes_q50_conservative": 195.0,
         "break_even_including_unknown_cost": 0.3333333333333333
       },
       "fresh": {
@@ -1977,7 +2038,7 @@
         "unknown_status": 16,
         "unknown_alerts": 12,
         "all_alerts_including_unknown": 136,
-        "net_minutes_q50_unknown_all_success": -1270.0,
+        "net_minutes_q50_conservative": -1270.0,
         "break_even_including_unknown_cost": 7.555555555555555
       }
     },
@@ -2001,7 +2062,7 @@
         "unknown_status": 4,
         "unknown_alerts": 4,
         "all_alerts_including_unknown": 174,
-        "net_minutes_q50_unknown_all_success": -705.0,
+        "net_minutes_q50_conservative": -705.0,
         "break_even_including_unknown_cost": 0.8405797101449275
       },
       "stale": {
@@ -2022,7 +2083,7 @@
         "unknown_status": 4,
         "unknown_alerts": 1,
         "all_alerts_including_unknown": 40,
-        "net_minutes_q50_unknown_all_success": 410.0,
+        "net_minutes_q50_conservative": 410.0,
         "break_even_including_unknown_cost": 0.24691358024691357
       },
       "fresh": {
@@ -2043,7 +2104,7 @@
         "unknown_status": 4,
         "unknown_alerts": 3,
         "all_alerts_including_unknown": 134,
-        "net_minutes_q50_unknown_all_success": -1115.0,
+        "net_minutes_q50_conservative": -1115.0,
         "break_even_including_unknown_cost": 2.977777777777778
       }
     },
@@ -2067,7 +2128,7 @@
         "unknown_status": 7,
         "unknown_alerts": 7,
         "all_alerts_including_unknown": 167,
-        "net_minutes_q50_unknown_all_success": -770.0,
+        "net_minutes_q50_conservative": -770.0,
         "break_even_including_unknown_cost": 0.9277777777777778
       },
       "stale": {
@@ -2088,7 +2149,7 @@
         "unknown_status": 7,
         "unknown_alerts": 2,
         "all_alerts_including_unknown": 32,
-        "net_minutes_q50_unknown_all_success": 355.0,
+        "net_minutes_q50_conservative": 355.0,
         "break_even_including_unknown_cost": 0.23703703703703705
       },
       "fresh": {
@@ -2109,7 +2170,7 @@
         "unknown_status": 7,
         "unknown_alerts": 5,
         "all_alerts_including_unknown": 135,
-        "net_minutes_q50_unknown_all_success": -1125.0,
+        "net_minutes_q50_conservative": -1125.0,
         "break_even_including_unknown_cost": 3.0
       }
     }
@@ -2141,7 +2202,7 @@
       "failures": 31
     },
     {
-      "label": "[46, 66)",
+      "label": "[46, ∞)",
       "n": 98,
       "failures": 33
     }

@@ -37,9 +37,15 @@ def decide(record):
         result['age_minutes'] = age
         if record.get('workshop') not in WORKSHOPS:
             raise ValueError('车间不在本次验证范围，请人工核对')
+        device_type = record.get('device_type')
+        if not isinstance(device_type, str) or not device_type.strip():
+            raise ValueError('缺少设备类型')
         # These are data validity checks, not equipment safety thresholds.
         for name in ('battery_level', 'ambient_temp'):
-            value = float(record.get(name, ''))
+            raw_value = record.get(name, '')
+            if isinstance(raw_value, bool):
+                raise ValueError('电量或温度不能为布尔值')
+            value = float(raw_value)
             if not math.isfinite(value):
                 raise ValueError('电量或温度不是有限数值')
             if name == 'battery_level' and not 0 <= value <= 100:
@@ -49,9 +55,10 @@ def decide(record):
         result['next_steps'] = ['核对时间、时区与现场数据后重新检查；按现有现场规程处理。']
         return result
     if age > THRESHOLD and record['workshop'] in PILOT:
-        result.update(decision='review', reasons=[f'设备状态已 {age:g} 分钟未成功更新，超过 {THRESHOLD} 分钟复核阈值。'],
+        result.update(decision='review', reasons=[f'距末次成功拉取已 {age:g} 分钟，超过 {THRESHOLD} 分钟复核阈值。'],
                       next_steps=['执行前重新拉取设备状态，核对设备与工单对应关系。',
-                                  '同步成功后以新的执行时间和同步时间重新检查；仍异常则人工核对并记录原因。',
+                                  '确认返回状态对应本设备并检查时间信息后，再用新的执行时间和拉取时间复查；仍异常则人工核对并记录原因。',
+                                  '当前数据没有设备测量时间或版本号；仅同步成功不能证明状态值来自最新测量。',
                                   '本原型未连接现场系统，不会远程刷新或控制设备。'])
     else:
         reason = '未触发本次时效复核规则，请继续既有巡检流程。'

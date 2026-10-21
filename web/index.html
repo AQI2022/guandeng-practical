@@ -10,6 +10,13 @@
 @media(max-width:900px){.sequence{display:none}.brand small{display:none}.hero h1{font-size:28px}.grid{gap:18px}.card-header,.card-body,.result-body{padding-left:20px;padding-right:20px}.metric{padding:0 18px}.metric-value{font-size:25px}.evidence-bottom{gap:20px}.header-right .time-note{display:none}}
 @media(max-width:680px){header{height:65px;padding:0 18px}.brand{font-size:16px}.header-right{gap:6px}.badge{padding:4px 8px;font-size:10px}main{padding:24px 16px 32px}.hero{margin-bottom:20px}.hero h1{font-size:25px}.hero p{font-size:13px}.status-strip{margin-bottom:18px;padding:11px 12px}.grid{grid-template-columns:1fr}.card-header,.card-body,.result-body{padding:18px}.sample-row{padding:10px;gap:8px}.sample-row label{font-size:11px}.form-grid{gap:12px}.field.wide{grid-column:1/-1}.form-actions{align-items:flex-start}.form-actions .subtle{max-width:155px}.primary{padding:12px 17px}.result{min-height:0}.result-empty{min-height:160px}.metrics{grid-template-columns:1fr 1fr;padding:8px 0}.metric{padding:16px 18px}.metric:nth-child(2){border:0}.metric:nth-child(-n+2){border-bottom:1px solid #e5eaea}.evidence-header{padding:18px}.evidence-bottom{grid-template-columns:1fr;padding:18px;gap:20px}.evidence-bottom>div+div{padding-top:20px;border-top:1px solid #e5eaea}footer{flex-direction:column;gap:4px}.evidence-header .section-tag{display:none}}
 </style>
+<style>
+.field-help,.metric-note,.fineprint{font-size:12px!important;color:var(--muted)!important}
+.workshop-sensitivity{margin:12px 0 0;padding:12px 14px;background:#f4f7f6;border:1px solid var(--line);border-radius:9px;font-size:12px}
+.workshop-sensitivity summary{font-weight:650;color:var(--ink);cursor:pointer}
+.workshop-sensitivity ul{padding-left:18px;margin:10px 0;color:var(--muted)}
+.workshop-sensitivity li{margin:5px 0}
+</style>
 </head>
 <body>
 <header>
@@ -33,7 +40,7 @@
             <div class="field"><label for="workshop">作业车间</label><input id="workshop" name="workshop" placeholder="请输入车间名称" required></div>
             <div class="field wide"><label for="device_type">设备类型</label><input id="device_type" name="device_type" placeholder="请输入设备类型" required></div>
             <div class="field wide"><label for="execute_time">计划执行时刻 <span>需包含时区</span></label><input class="mono" id="execute_time" name="execute_time" placeholder="YYYY-MM-DDTHH:MM:SS+08:00" required><div class="field-help">使用完整时间，例如末尾 +08:00 表示北京时间。</div></div>
-            <div class="field wide"><label for="last_telemetry_sync">最近成功同步时刻 <span>需包含时区</span></label><input class="mono" id="last_telemetry_sync" name="last_telemetry_sync" placeholder="YYYY-MM-DDTHH:MM:SSZ" required><div class="field-help">末尾 Z 表示 UTC，检查服务会统一时区后计算。</div></div>
+            <div class="field wide"><label for="last_telemetry_sync">终端最近成功拉取时刻 <span>需包含时区</span></label><input class="mono" id="last_telemetry_sync" name="last_telemetry_sync" placeholder="YYYY-MM-DDTHH:MM:SSZ" required><div class="field-help">距末次成功拉取的时间不等于设备测量值的采集时间；末尾 Z 表示 UTC。</div></div>
             <div class="field"><label for="battery_level">设备电量 <span>%</span></label><input id="battery_level" name="battery_level" type="number" min="0" max="100" step="any" placeholder="请输入电量" required></div>
             <div class="field"><label for="ambient_temp">环境温度 <span>°C</span></label><input id="ambient_temp" name="ambient_temp" type="number" step="any" placeholder="请输入温度" required></div>
           </div>
@@ -62,7 +69,7 @@
     </div>
     <div class="evidence-bottom">
       <div><h3>先区分识别能力与实际收益</h3><p id="evalDescription">历史回放只能验证提示与失败是否相关，不能证明复核已避免中断。</p><div class="mini-line"><span>提前复核成本</span><strong>10 分钟 / 次</strong></div><div class="mini-line"><span>作业中断损失</span><strong>90 分钟 / 次</strong></div><div class="mini-line"><span>干预有效率盈亏平衡点</span><strong id="breakEven">—</strong></div><p class="fineprint">时区先统一，再计算状态年龄。完全重复记录只计一次，缺失执行结果不进入效果评估。</p></div>
-      <div><h3>复核能避免多少已覆盖的失败？</h3><p>调整假设的干预有效率，查看扣除所有提示成本后的净节省。以下均为情景推算。</p><div class="cost-input"><input type="range" id="effectiveness" min="0" max="100" step="5" value="50" aria-label="假设干预有效率"><output id="effectivenessValue" for="effectiveness">50%</output></div><div class="cost-result" id="costResult">等待回放结果，暂不估算收益。</div><p class="fineprint" id="costFormula">净节省 = 覆盖的历史失败数 × 干预有效率 × 90 − 提示数 × 10。有效率未知，不等于准确率。</p></div>
+      <div><h3>复核能避免多少已覆盖的失败？</h3><p>调整假设的干预有效率，查看扣除所有提示成本后的净节省。以下均为情景推算。</p><div class="cost-input"><input type="range" id="effectiveness" min="0" max="100" step="5" value="50" aria-label="假设干预有效率"><output id="effectivenessValue" for="effectiveness">50%</output></div><div class="cost-result" id="costResult">等待回放结果，暂不估算收益。</div><p class="fineprint" id="costFormula">净节省 = 覆盖的历史失败数 × 干预有效率 × 90 − 提示数 × 10。有效率未知，不等于准确率。</p><details class="workshop-sensitivity"><summary>展开查看各试点车间的盈亏临界</summary><ul id="workshopSensitivity"><li>等待回放结果</li></ul><p>按开发期记录估算；有效率未知，不能据此证明现场收益。</p></details></div>
     </div>
   </section>
   <footer><span>数据来源：inspection_tasks.csv · 历史样本演示，未连接设备</span><span id="footerVersion">状态时效复核原型</span></footer>
@@ -71,7 +78,7 @@
 'use strict';
 const $=id=>document.getElementById(id);
 const fields=['task_id','execute_time','last_telemetry_sync','workshop','device_type','battery_level','ambient_temp'];
-let samples=[],evaluation=null;
+let samples=[],evaluation=null,formVersion=0;
 const number=value=>typeof value==='number'&&Number.isFinite(value);
 const fmt=value=>number(value)?value.toLocaleString('zh-CN',{maximumFractionDigits:1}):'—';
 const pct=value=>number(value)?(value*100).toFixed(1)+'%':'—';
@@ -79,8 +86,9 @@ function set(id,value){$(id).textContent=value;}
 function node(tag,cls,text){const e=document.createElement(tag);if(cls)e.className=cls;if(text!==undefined)e.textContent=text;return e;}
 function error(message){set('formError',message);$('formError').classList.remove('hidden');}
 function clearResult(message){const container=$('resultContent');container.replaceChildren();const empty=node('div','result-empty');empty.append(node('h3','','等待执行前检查'),node('p','',message));container.append(empty);set('resultSubtitle','输入已更新，请重新检查');}
-function fillSample(index){const sample=samples[index];if(!sample)return;for(const field of fields){$(field).value=sample[field]??'';}clearResult('已载入历史工单 '+sample.task_id+'。点击「检查状态时效」查看提示。');set('resultSubtitle','已载入历史工单 '+sample.task_id+'，点击检查查看提示');}
-function renderResult(result){
+function invalidateCheck(message){formVersion+=1;clearResult(message);}
+function fillSample(index){const sample=samples[index];if(!sample)return;for(const field of fields){$(field).value=sample[field]??'';}invalidateCheck('已载入历史工单 '+sample.task_id+'。点击「检查状态时效」查看提示。');set('resultSubtitle','已载入历史工单 '+sample.task_id+'，点击检查查看提示');}
+function renderResult(result,requestTaskId){
  const container=$('resultContent');container.replaceChildren();
  const valid=['review','continue','invalid'].includes(result.decision);
  if(!valid)throw new Error('检查服务返回了无法识别的结果。');
@@ -88,12 +96,12 @@ function renderResult(result){
  const titles={review:'先复核设备状态',continue:'未触发时效复核',invalid:'请先核对输入数据'};
  const fallback={review:'状态信息可能已过期，请先核对最新设备状态。',continue:'继续既有巡检流程；本结果不代表设备安全或任务必定成功。',invalid:'输入信息不足或时间不合理，暂不能作出时效判断。'};
  const banner=node('div','result-banner '+decision);banner.append(node('span','result-icon',decision==='continue'?'✓':'!'));const text=node('div');text.append(node('h3','',titles[decision]));const reasons=Array.isArray(result.reasons)?result.reasons:[];text.append(node('p','',reasons.length?reasons.join('；'):fallback[decision]));banner.append(text);container.append(banner);
- const age=node('div','age-line');age.append(node('span','','距最近成功同步'));const ageValue=node('strong','',fmt(result.age_minutes));ageValue.append(node('span','','分钟'));age.append(ageValue);container.append(age);
+ const age=node('div','age-line');age.append(node('span','','距末次成功拉取'));const ageValue=node('strong','',fmt(result.age_minutes));ageValue.append(node('span','','分钟'));age.append(ageValue);container.append(age);
  const steps=Array.isArray(result.next_steps)?result.next_steps:[];
  if(steps.length){container.append(node('h4','next-title','接下来'));const list=node('ul','next-steps');for(const step of steps)list.append(node('li','',step));container.append(list);}
  container.append(node('p','result-foot',decision==='continue'?fallback.continue:'本页仅给出复核提示。刷新设备数据、确认记录和作业放行需由实际系统与现场人员完成。'));
  if(result.rule_version){set('ruleVersion',result.rule_version);set('footerVersion','规则版本 '+result.rule_version);}
- set('resultSubtitle','工单 '+$('task_id').value+' · 本地规则检查完成');
+ set('resultSubtitle','工单 '+requestTaskId+' · 本地规则检查完成');
 }
 function updateCost(){
  const q=Number($('effectiveness').value)/100;set('effectivenessValue',(q*100).toFixed(0)+'%');
@@ -110,6 +118,8 @@ function renderReport(report){
  if(number(summary.missing_status))set('mLabeledNote',summary.missing_status+' 个工单结果缺失，单独保留');
  if(number(summary.failures)&&number(summary.labeled_tasks)&&summary.labeled_tasks>0)set('mFailureNote','已知结果失败率 '+pct(summary.failures/summary.labeled_tasks));
  if(evaluation){const scope=evaluation.scope||report.method?.replay||'时间回放';set('mRecall',pct(evaluation.recall));set('mRecallNote','回放 '+fmt(evaluation.n)+' 个已知结果，覆盖 '+fmt(evaluation.tp)+' / '+fmt(evaluation.failures)+' 次失败');set('breakEven',pct(evaluation.break_even_including_unknown_cost??evaluation.break_even_effectiveness));if(number(evaluation.alerts)&&number(evaluation.tp))set('evalDescription','回放期 '+fmt(evaluation.n)+' 个已知结果中，提示 '+evaluation.alerts+' 次，覆盖 '+evaluation.tp+' 次历史失败；提示中实际失败的比例为 '+pct(evaluation.precision)+'。另有 '+(evaluation.unknown_alerts??0)+' 次提示结果未知。');set('evidenceScope','回放：'+scope+' · 前三项展示全数据；覆盖比例与成本使用回放期。');}
+ const workshopList=$('workshopSensitivity');workshopList.replaceChildren();
+ for(const w of report.workshop_selection||[]){if(!w.include_in_pilot)continue;const parts=[w.workshop];if(number(w.break_even_including_unknown_cost))parts.push('q 至少 '+pct(w.break_even_including_unknown_cost));if(number(w.q50_review_cost_ceiling_minutes))parts.push('q=50% 时复核成本约不高于 '+fmt(w.q50_review_cost_ceiling_minutes)+' 分钟 / 次');workshopList.append(node('li','',parts.join('；')));}
  if(report.policy?.description)set('policyDescription',report.policy.description+' 本原型不控制设备，不替代现场安全判定。');
  if(report.policy?.rule_version)set('ruleVersion',report.policy.rule_version);
  samples=Array.isArray(report.examples)?report.examples:[];
@@ -119,14 +129,15 @@ function renderReport(report){
  set('dataStatusText','已读取本地分析结果 · 原始数据保留，统计数字可由仓库脚本复现。');updateCost();
 }
 $('sampleSelect').addEventListener('change',e=>fillSample(Number(e.target.value)));
-for(const field of fields)$(field).addEventListener('input',()=>clearResult('工单输入已修改。点击「检查状态时效」重新获取结果。'));
+for(const field of fields)$(field).addEventListener('input',()=>invalidateCheck('工单输入已修改；请重新检查。'));
 $('effectiveness').addEventListener('input',updateCost);
 $('checkForm').addEventListener('submit',async event=>{
  event.preventDefault();$('formError').classList.add('hidden');const button=$('checkButton');button.disabled=true;button.textContent='正在检查…';
- const payload={};for(const field of fields){const value=$(field).value.trim();payload[field]=['battery_level','ambient_temp'].includes(field)?(value===''?null:Number(value)):value;}
- try{const response=await fetch('/api/check',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});const result=await response.json();if(!response.ok&&!result.decision)throw new Error(result.error||'检查请求失败，请确认本地服务正在运行。');renderResult(result);}
- catch(err){error(err instanceof Error?err.message:'检查失败，请重试。');}
- finally{button.disabled=false;button.textContent='检查状态时效 →';}
+ const requestVersion=++formVersion;const payload={};for(const field of fields){const value=$(field).value.trim();payload[field]=['battery_level','ambient_temp'].includes(field)?(value===''?null:Number(value)):value;}
+ const requestTaskId=payload.task_id;const controller=new AbortController();const timeout=setTimeout(()=>controller.abort(),10000);clearResult('正在读取本地规则，请保持当前输入不变…');set('resultSubtitle','正在检查工单 '+requestTaskId);
+ try{const response=await fetch('/api/check',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload),signal:controller.signal});const result=await response.json();if(!response.ok&&!result.decision)throw new Error(result.error||'检查请求失败，请确认本地服务正在运行。');if(requestVersion!==formVersion)return;renderResult(result,requestTaskId);}
+ catch(err){if(requestVersion!==formVersion)return;error(err instanceof DOMException&&err.name==='AbortError'?'检查超时；请确认本地服务后重试。':err instanceof Error?err.message:'检查失败，请重试。');}
+ finally{clearTimeout(timeout);button.disabled=false;button.textContent='检查状态时效 →';}
 });
 (async()=>{try{const response=await fetch('/api/report');if(!response.ok)throw new Error('分析报告尚未生成');renderReport(await response.json());}catch(err){$('dataStatus').classList.add('error');set('dataStatusText','无法加载本地分析结果。请先运行分析脚本，再通过本地服务打开本页。');$('sampleSelect').replaceChildren(node('option','','报告不可用，可手动填写'));}})();
 </script>
